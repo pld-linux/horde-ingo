@@ -1,5 +1,6 @@
 %include	/usr/lib/rpm/macros.php
-Summary:	Ingo is an email filter rules manager
+Summary:	Ingo - an email filter rules manager
+Summary(pl):	Ingo - zarz±dca regu³ filtrowania poczty elektronicznej
 Name:		ingo
 Version:	1.0.1
 Release:	0.6
@@ -35,8 +36,22 @@ Ingo has replaced IMP's internal filtering code and is the default
 filtering agent in IMP H3 (4.0).
 
 The Horde Project writes web applications in PHP and releases them
-under the GNU Public License. For more information (including help
-with Ingo) please visit <http://www.horde.org/>.
+under the GNU General Public License. For more information (including
+help with Ingo) please visit <http://www.horde.org/>.
+
+%description -l pl
+Ingo aktualnie obs³uguje nastêpuj±ce sterowniki filtrowania:
+- Sieve (przy u¿yciu timsieved)
+- procmail (przy u¿yciu sterownika VFS FTP)
+- filtrowanie po stronie klienta IMAP
+
+Ingo zast±pi³ wewnêtrzny kod filtruj±cy IMP-a i jest domy¶lnym agentem
+filtrowania w IMP-ie H3 (4.0).
+
+Projekt Horde pisze aplikacje WWW w PHP i wydaje je na Powszechnej
+Licencji Publicznej GNU (General Public License). Wiêcej informacji
+(wraz z pomoc± do Ingo) mo¿na znale¼æ na stronie
+<http://www.horde.org/>.
 
 %prep
 %setup -q -n %{name}-h3-%{version}
