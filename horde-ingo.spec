@@ -3,7 +3,7 @@ Summary:	Ingo - an email filter rules manager
 Summary(pl):	Ingo - zarz±dca regu³ filtrowania poczty elektronicznej
 Name:		ingo
 Version:	1.0.1
-Release:	0.6
+Release:	0.8
 License:	GPL v2
 Group:		Networking/Utilities
 Source0:	http://ftp.horde.org/pub/ingo/%{name}-h3-%{version}.tar.gz
@@ -12,6 +12,7 @@ Source1:	%{name}.conf
 Patch0:		%{name}-path.patch
 URL:		http://www.horde.org/ingo/
 Requires:	apache >= 1.3.33-2
+Requires:	apache(mod_access)
 Requires:	horde >= 3.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
