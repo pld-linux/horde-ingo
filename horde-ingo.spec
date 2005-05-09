@@ -5,7 +5,7 @@ Name:		ingo
 Version:	1.0.1
 Release:	1
 License:	GPL v2
-Group:		Networking/Utilities
+Group:		Applications/WWW
 Source0:	http://ftp.horde.org/pub/ingo/%{name}-h3-%{version}.tar.gz
 # Source0-md5:	7fce229d752e5b981621e215e4fc56e8
 Source1:	%{name}.conf
