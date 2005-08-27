@@ -6,7 +6,7 @@
 Summary:	Ingo - an email filter rules manager
 Summary(pl):	Ingo - zarz±dca regu³ filtrowania poczty elektronicznej
 Name:		ingo
-Version:	1.0.1
+Version:	1.1
 Release:	%{?_rc:%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
