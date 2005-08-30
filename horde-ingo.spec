@@ -1,17 +1,20 @@
 
-%define	_snap	2005-08-26
+#%define	_snap	2005-08-26
+%define		_rc	rc1
 %define	_rel	1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
 Summary(pl):	Ingo - zarz±dca regu³ filtrowania poczty elektronicznej
 Name:		ingo
-Version:	1.1
-Release:	%{?_rc:%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
+Version:	1.0.2
+#Release:	%{?_rc:%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
+Release:	0.%{_rc}.%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	ftp://ftp.horde.org/pub/snaps/2005-08-26/%{name}-HEAD-%{_snap}.tar.gz
-# Source0-md5:	32dd41dafa8b2dd0968fb6ba1e139c0a
+#Source0:	ftp://ftp.horde.org/pub/snaps/2005-08-26/%{name}-HEAD-%{_snap}.tar.gz
+Source0:	ftp://ftp.horde.org/pub/ingo/%{name}-h3-%{version}-%{_rc}.tar.gz
+# Source0-md5:	3350a61407259492e11319251ae4ab7c
 Source1:	%{name}.conf
 Patch0:		%{name}-path.patch
 URL:		http://www.horde.org/ingo/
@@ -58,7 +61,7 @@ Licencji Publicznej GNU (General Public License). Wiêcej informacji
 <http://www.horde.org/>.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-h3-%{version}-%{_rc}
 %patch0 -p1
 
 # considered harmful (horde/docs/SECURITY)
