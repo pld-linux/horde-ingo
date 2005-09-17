@@ -16,6 +16,7 @@ Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}-%{_rc}.tar.gz
 Source1:	%{_hordeapp}.conf
 Patch0:		%{_hordeapp}-path.patch
 URL:		http://www.horde.org/ingo/
+BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.226
 BuildRequires:	tar >= 1:1.15.1
 Requires:	apache >= 1.3.33-2
@@ -28,7 +29,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautocompressdoc  CREDITS
 %define		_noautoreq	'pear(Horde.*)'
 
-%define		hordedir	%{_datadir}/horde
+%define		hordedir	/usr/share/horde
 %define		_sysconfdir	/etc/horde.org
 %define		_appdir		%{hordedir}/%{_hordeapp}
 
