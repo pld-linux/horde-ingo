@@ -1,6 +1,6 @@
 %define	_hordeapp ingo
 #define	_snap	2005-08-26
-%define	_rc		rc1
+#define	_rc		rc1
 %define	_rel	1
 #
 %include	/usr/lib/rpm/macros.php
@@ -11,8 +11,8 @@ Version:	1.0.2
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}-%{_rc}.tar.gz
-# Source0-md5:	3350a61407259492e11319251ae4ab7c
+Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}.tar.gz
+# Source0-md5:	6bc7addfdd3bc18e4d6af5c1d57b7b89
 Source1:	%{_hordeapp}.conf
 Patch0:		%{_hordeapp}-path.patch
 URL:		http://www.horde.org/ingo/
