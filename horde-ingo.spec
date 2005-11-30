@@ -116,7 +116,7 @@ fi
 %webapp_unregister httpd %{_webapp}
 
 %triggerpostun -- horde-%{_hordeapp} < 1.0.2-1.1
-for i in backends.php conf.php conf.xml fields.php prefs.php; do
+for i in backends.php conf.php fields.php prefs.php; do
 	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
 		mv -f %{_sysconfdir}/$i{,.rpmnew}
 		mv -f /etc/horde.org/%{_hordeapp}/$i.rpmsave %{_sysconfdir}/$i
