@@ -65,7 +65,7 @@ Licencji Publicznej GNU (General Public License). Wiêcej informacji
 <http://www.horde.org/>.
 
 %prep
-%setup -q -c -T -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
+%setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
 tar zxf %{SOURCE0} --strip-components=1
 %patch0 -p1
 
@@ -85,10 +85,10 @@ echo '<?php ?>' >		$RPM_BUILD_ROOT%{_sysconfdir}/conf.php
 cp -p config/conf.xml	$RPM_BUILD_ROOT%{_sysconfdir}/conf.xml
 touch					$RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
 
-cp -pR  lib/*                   $RPM_BUILD_ROOT%{_appdir}/lib
-cp -pR  locale/*                $RPM_BUILD_ROOT%{_appdir}/locale
-cp -pR  templates/*             $RPM_BUILD_ROOT%{_appdir}/templates
-cp -pR  themes/*                $RPM_BUILD_ROOT%{_appdir}/themes
+cp -a  lib/*                   $RPM_BUILD_ROOT%{_appdir}/lib
+cp -a  locale/*                $RPM_BUILD_ROOT%{_appdir}/locale
+cp -a  templates/*             $RPM_BUILD_ROOT%{_appdir}/templates
+cp -a  themes/*                $RPM_BUILD_ROOT%{_appdir}/themes
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 ln -s %{_docdir}/%{name}-%{version}/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
@@ -148,7 +148,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README docs/*
-%attr(750,root,http) %dir %{_sysconfdir}
+%dir %attr(750,root,http) %{_sysconfdir}
 %attr(640,root,root) %config(noreplace) %{_sysconfdir}/apache.conf
 %attr(640,root,root) %config(noreplace) %{_sysconfdir}/httpd.conf
 %attr(660,root,http) %config(noreplace) %{_sysconfdir}/conf.php
