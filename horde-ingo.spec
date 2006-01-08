@@ -112,7 +112,7 @@ fi
 %triggerun -- apache >= 2.0.0
 %webapp_unregister httpd %{_webapp}
 
-%triggerpostun -- horde-%{_hordeapp} < 1.0.2-1.1, %{_hordeapp} < 1.0.2-1.1
+%triggerpostun -- horde-%{_hordeapp} < 1.0.2-1.1, %{_hordeapp}
 for i in backends.php conf.php fields.php prefs.php; do
 	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
 		mv -f %{_sysconfdir}/$i{,.rpmnew}
