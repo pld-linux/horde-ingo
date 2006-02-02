@@ -106,10 +106,10 @@ fi
 %triggerun -- apache1
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache >= 2.0.0
+%triggerin -- apache < 2.2.0, apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache >= 2.0.0
+%triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
 
 %triggerpostun -- horde-%{_hordeapp} < 1.0.2-1.1, %{_hordeapp}
