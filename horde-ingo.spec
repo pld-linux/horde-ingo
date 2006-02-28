@@ -1,7 +1,7 @@
 %define	_hordeapp ingo
 #define	_snap	2005-08-26
 %define	_rc		rc2
-%define	_rel	0.1
+%define	_rel	0.7
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
@@ -110,7 +110,7 @@ fi
 %triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
 
-%triggerpostun -- horde-%{_hordeapp} < 1.0.2-1.1, %{_hordeapp}
+%triggerpostun -- horde-%{_hordeapp} < 1.1-0.rc2.0.6, %{_hordeapp}
 for i in backends.php conf.php fields.php prefs.php; do
 	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
 		mv -f %{_sysconfdir}/$i{,.rpmnew}
@@ -132,6 +132,7 @@ if [ -L /etc/apache/conf.d/99_horde-%{_hordeapp}.conf ]; then
 fi
 if [ -L /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf ]; then
 	/usr/sbin/webapp register httpd %{_webapp}
+	rm -f /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf
 	%service -q httpd reload
 fi
 
