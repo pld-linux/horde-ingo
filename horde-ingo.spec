@@ -1,7 +1,7 @@
 %define	_hordeapp ingo
 #define	_snap	2005-08-26
-%define	_rc		rc2
-%define	_rel	0.7
+#define	_rc		rc2
+%define	_rel	0.1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
@@ -11,9 +11,9 @@ Version:	1.1
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
 License:	GPL v2
 Group:		Applications/WWW
-#Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}.tar.gz
-Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}-%{_rc}.tar.gz
-# Source0-md5:	e174481be33c28bc246355f26942157a
+Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}.tar.gz
+# Source0-md5:	01d022a20d426e9e88d6b30765fa70f7
+#Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}-%{_rc}.tar.gz
 Source1:	%{_hordeapp}.conf
 Patch0:		%{_hordeapp}-path.patch
 URL:		http://www.horde.org/ingo/
