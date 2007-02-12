@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
-Summary(pl):	Ingo - zarz±dca regu³ filtrowania poczty elektronicznej
+Summary(pl.UTF-8):   Ingo - zarzÄ…dca reguÅ‚ filtrowania poczty elektronicznej
 Name:		horde-%{_hordeapp}
 Version:	1.1.2
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
@@ -49,18 +49,18 @@ The Horde Project writes web applications in PHP and releases them
 under the GNU General Public License. For more information (including
 help with Ingo) please visit <http://www.horde.org/>.
 
-%description -l pl
-Ingo aktualnie obs³uguje nastêpuj±ce sterowniki filtrowania:
-- Sieve (przy u¿yciu timsieved)
-- procmail (przy u¿yciu sterownika VFS FTP)
+%description -l pl.UTF-8
+Ingo aktualnie obsÅ‚uguje nastÄ™pujÄ…ce sterowniki filtrowania:
+- Sieve (przy uÅ¼yciu timsieved)
+- procmail (przy uÅ¼yciu sterownika VFS FTP)
 - filtrowanie po stronie klienta IMAP
 
-Ingo zast±pi³ wewnêtrzny kod filtruj±cy IMP-a i jest domy¶lnym agentem
+Ingo zastÄ…piÅ‚ wewnÄ™trzny kod filtrujÄ…cy IMP-a i jest domyÅ›lnym agentem
 filtrowania w IMP-ie H3 (4.0).
 
 Projekt Horde pisze aplikacje WWW w PHP i wydaje je na Powszechnej
-Licencji Publicznej GNU (General Public License). Wiêcej informacji
-(wraz z pomoc± do Ingo) mo¿na znale¼æ na stronie
+Licencji Publicznej GNU (General Public License). WiÄ™cej informacji
+(wraz z pomocÄ… do Ingo) moÅ¼na znaleÅºÄ‡ na stronie
 <http://www.horde.org/>.
 
 %prep
