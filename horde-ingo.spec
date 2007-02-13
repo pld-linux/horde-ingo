@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
-Summary(pl.UTF-8):   Ingo - zarządca reguł filtrowania poczty elektronicznej
+Summary(pl.UTF-8):	Ingo - zarządca reguł filtrowania poczty elektronicznej
 Name:		horde-%{_hordeapp}
 Version:	1.1.2
 Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
