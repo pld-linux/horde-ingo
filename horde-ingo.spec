@@ -1,28 +1,28 @@
-%define	_hordeapp ingo
-#define	_snap	2005-08-26
-%define	_rc		rc1
-%define	_rel	1
+%define		hordeapp ingo
+#define		_snap	2005-08-26
+%define		subver	rc2
+%define		rel		1
 #
 %include	/usr/lib/rpm/macros.php
 Summary:	Ingo - an email filter rules manager
 Summary(pl.UTF-8):	Ingo - zarządca reguł filtrowania poczty elektronicznej
-Name:		horde-%{_hordeapp}
+Name:		horde-%{hordeapp}
 Version:	1.2
-Release:	%{?_rc:0.%{_rc}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{_rel}
+Release:	%{?subver:0.%{subver}.}%{?_snap:0.%(echo %{_snap} | tr -d -).}%{rel}
 License:	GPL v2
 Group:		Applications/WWW
-#Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}.tar.gz
-Source0:	ftp://ftp.horde.org/pub/ingo/%{_hordeapp}-h3-%{version}-%{_rc}.tar.gz
-# Source0-md5:	e8e1bef4f2c2dbb4344c5b70bc5b9238
-Source1:	%{_hordeapp}.conf
-Patch0:		%{_hordeapp}-path.patch
+#Source0:	ftp://ftp.horde.org/pub/ingo/%{hordeapp}-h3-%{version}.tar.gz
+Source0:	ftp://ftp.horde.org/pub/ingo/%{hordeapp}-h3-%{version}-%{subver}.tar.gz
+# Source0-md5:	e281ee9abd11eee907b0e67f2ff36d3f
+Source1:	%{hordeapp}.conf
+Patch0:		%{hordeapp}-path.patch
 URL:		http://www.horde.org/ingo/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	tar >= 1:1.15.1
 Requires:	horde >= 3.0
 Requires:	webapps
-Obsoletes:	%{_hordeapp}
+Obsoletes:	%{hordeapp}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,9 +31,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq	'pear(Horde.*)'
 
 %define		hordedir	/usr/share/horde
-%define		_appdir		%{hordedir}/%{_hordeapp}
+%define		_appdir		%{hordedir}/%{hordeapp}
 %define		_webapps	/etc/webapps
-%define		_webapp		horde-%{_hordeapp}
+%define		_webapp		horde-%{hordeapp}
 %define		_sysconfdir	%{_webapps}/%{_webapp}
 
 %description
@@ -64,7 +64,7 @@ Licencji Publicznej GNU (General Public License). Więcej informacji
 <http://www.horde.org/>.
 
 %prep
-%setup -qcT -n %{?_snap:%{_hordeapp}-%{_snap}}%{!?_snap:%{_hordeapp}-%{version}%{?_rc:-%{_rc}}}
+%setup -qcT -n %{?_snap:%{hordeapp}-%{_snap}}%{!?_snap:%{hordeapp}-%{version}%{?subver:-%{subver}}}
 tar zxf %{SOURCE0} --strip-components=1
 %patch0 -p1
 
@@ -109,32 +109,6 @@ fi
 
 %triggerun -- apache < 2.2.0, apache-base
 %webapp_unregister httpd %{_webapp}
-
-%triggerpostun -- horde-%{_hordeapp} < 1.1-0.rc2.0.6, %{_hordeapp}
-for i in backends.php conf.php fields.php prefs.php; do
-	if [ -f /etc/horde.org/%{_hordeapp}/$i.rpmsave ]; then
-		mv -f %{_sysconfdir}/$i{,.rpmnew}
-		mv -f /etc/horde.org/%{_hordeapp}/$i.rpmsave %{_sysconfdir}/$i
-	fi
-done
-
-if [ -f /etc/horde.org/apache-%{_hordeapp}.conf.rpmsave ]; then
-	mv -f %{_sysconfdir}/apache.conf{,.rpmnew}
-	mv -f %{_sysconfdir}/httpd.conf{,.rpmnew}
-	cp -f /etc/horde.org/apache-%{_hordeapp}.conf.rpmsave %{_sysconfdir}/apache.conf
-	cp -f /etc/horde.org/apache-%{_hordeapp}.conf.rpmsave %{_sysconfdir}/httpd.conf
-fi
-
-if [ -L /etc/apache/conf.d/99_horde-%{_hordeapp}.conf ]; then
-	/usr/sbin/webapp register apache %{_webapp}
-	rm -f /etc/apache/conf.d/99_horde-%{_hordeapp}.conf
-	%service -q apache reload
-fi
-if [ -L /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf ]; then
-	/usr/sbin/webapp register httpd %{_webapp}
-	rm -f /etc/httpd/httpd.conf/99_horde-%{_hordeapp}.conf
-	%service -q httpd reload
-fi
 
 %files
 %defattr(644,root,root,755)
