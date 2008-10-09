@@ -58,7 +58,7 @@ Licencji Publicznej GNU (General Public License). Więcej informacji
 <http://www.horde.org/>.
 
 %prep
-%setup -q
+%setup -q -n %{_hordeapp}-h3-%{version}
 %patch0 -p1
 
 rm */.htaccess
