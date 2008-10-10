@@ -5,7 +5,7 @@ Summary:	Ingo - an email filter rules manager
 Summary(pl.UTF-8):	Ingo - zarządca reguł filtrowania poczty elektronicznej
 Name:		horde-%{hordeapp}
 Version:	1.2.1
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/ingo/%{hordeapp}-h3-%{version}.tar.gz
@@ -21,7 +21,7 @@ Obsoletes:	%{hordeapp}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_noautoreq	'pear(Horde.*)'
+%define		_noautoreq	'pear(/usr/share/horde.*)' 'pear(Horde.*)'
 
 %define		hordedir	/usr/share/horde
 %define		_appdir		%{hordedir}/%{hordeapp}
@@ -57,7 +57,7 @@ Licencji Publicznej GNU (General Public License). Więcej informacji
 <http://www.horde.org/>.
 
 %prep
-%setup -q -n %{_hordeapp}-h3-%{version}
+%setup -q -n %{hordeapp}-h3-%{version}
 %patch0 -p1
 
 rm */.htaccess
@@ -75,7 +75,7 @@ cp -a *.php $RPM_BUILD_ROOT%{_appdir}
 cp -a config/* $RPM_BUILD_ROOT%{_sysconfdir}
 echo '<?php ?>' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.php
 touch $RPM_BUILD_ROOT%{_sysconfdir}/conf.php.bak
-cp -a lib locale templates themes $RPM_BUILD_ROOT%{_appdir}
+cp -a js lib locale templates themes $RPM_BUILD_ROOT%{_appdir}
 cp -a docs/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
@@ -117,6 +117,7 @@ fi
 %{_appdir}/*.php
 %{_appdir}/config
 %{_appdir}/docs
+%{_appdir}/js
 %{_appdir}/lib
 %{_appdir}/locale
 %{_appdir}/templates
