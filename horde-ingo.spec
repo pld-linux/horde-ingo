@@ -20,7 +20,7 @@ Requires:	php(imap)
 Requires:	webapps
 Suggests:	php-pear-Net_Sieve >= 1.0.1
 Suggests:	php-pear-Net_Socket
-Obsoletes:	%{hordeapp}
+Obsoletes:	ingo
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
