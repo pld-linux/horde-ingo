@@ -4,8 +4,8 @@
   */
  
  // Make sure that INGO_STORAGE_* constants are defined.
--@define('INGO_BASE', dirname(__FILE__) . '/..');
-+@define('INGO_BASE', '/usr/share/horde/ingo');
- require_once INGO_BASE . '/lib/Storage.php';
+-require_once dirname(__FILE__) . '/../lib/Storage.php';
++require_once '/usr/share/horde/ingo/lib/Storage.php';
  
  // This preference group will only be displayed if the configured
+ // Ingo_Script:: driver can create script files.
