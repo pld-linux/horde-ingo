@@ -14,8 +14,8 @@
          } else {
              if (empty($folder) || ($folder == 'INBOX')) {
                  return '$DEFAULT';
---- ingo-h3-1.2.3/config/backends.php~	2008-12-15 03:33:07.000000000 +0100
-+++ ingo-h3-1.2.3/config/backends.php	2010-05-10 01:32:45.118392319 +0200
+--- ingo-h3-1.2.3/config/backends.php.dist~	2008-12-15 03:33:07.000000000 +0100
++++ ingo-h3-1.2.3/config/backends.php.dist	2010-05-10 01:32:45.118392319 +0200
 @@ -169,6 +169,8 @@
      'scriptparams' => array(
          // What path style does the IMAP server use ['mbox'|'maildir']?
