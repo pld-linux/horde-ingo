@@ -1,0 +1,27 @@
+--- ingo-h3-1.2.3/lib/Script/procmail.php~	2010-05-10 01:06:45.552586096 +0200
++++ ingo-h3-1.2.3/lib/Script/procmail.php	2010-05-10 01:31:29.703394736 +0200
+@@ -758,7 +758,12 @@
+             if (substr($folder, 0, 6) == 'INBOX.') {
+                 $folder = substr($folder, 6);
+             }
+-            return '"$DEFAULT/.' . escapeshellcmd($folder) . '/"';
++	    if (isset($this->_params['no_dot_folder']) &&
++			$this->_params['no_dot_folder']) {
++		return '"$DEFAULT/' . escapeshellcmd($folder) . '/"';
++            } else {    
++	        return '"$DEFAULT/.' . escapeshellcmd($folder) . '/"';
++	    }
+         } else {
+             if (empty($folder) || ($folder == 'INBOX')) {
+                 return '$DEFAULT';
+--- ingo-h3-1.2.3/config/backends.php~	2008-12-15 03:33:07.000000000 +0100
++++ ingo-h3-1.2.3/config/backends.php	2010-05-10 01:32:45.118392319 +0200
+@@ -169,6 +169,8 @@
+     'scriptparams' => array(
+         // What path style does the IMAP server use ['mbox'|'maildir']?
+         'path_style' => 'mbox',
++        // Do not prepend folder names with dot in procmailrc rules
++        // 'no_dot_folder' => true,
+         // An array of variables to append to every generated script.
+         // Use if you need to set up specific environment variables.
+         'variables' => array(
