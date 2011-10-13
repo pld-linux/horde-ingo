@@ -1,0 +1,36 @@
+--- ingo-h3-1.2.5/lib/Script/procmail.php~	2010-09-30 22:00:31.000000000 +0200
++++ ingo-h3-1.2.5/lib/Script/procmail.php	2011-10-13 11:12:19.139091632 +0200
+@@ -758,9 +758,19 @@
+             }
+ 	    if (isset($this->_params['no_dot_folder']) &&
+ 			$this->_params['no_dot_folder']) {
+-		return '"$DEFAULT/' . escapeshellcmd($folder) . '/"';
++		if (isset($this->_params['folders_in_maildir']) &&
++			$this->_params['folders_in_maildir']) {
++		    return '"$MAILDIR/' . escapeshellcmd($folder) . '/"';
++		} else {
++		    return '"$DEFAULT/' . escapeshellcmd($folder) . '/"';
++		}
+             } else {    
+-	        return '"$DEFAULT/.' . escapeshellcmd($folder) . '/"';
++		if (isset($this->_params['folders_in_maildir']) &&
++			$this->_params['folders_in_maildir']) {
++		    return '"$MAILDIR/.' . escapeshellcmd($folder) . '/"';
++		} else {
++		    return '"$DEFAULT/.' . escapeshellcmd($folder) . '/"';
++		}
+ 	    }
+         } else {
+             if (empty($folder) || ($folder == 'INBOX')) {
+--- ingo-h3-1.2.5/config/backends.php.dist~	2008-12-15 03:33:07.000000000 +0100
++++ ingo-h3-1.2.5/config/backends.php.dist	2010-05-10 01:32:45.118392319 +0200
+@@ -171,6 +171,9 @@
+         'path_style' => 'mbox',
+         // Do not prepend folder names with dot in procmailrc rules
+         // 'no_dot_folder' => true,
++        // Use $MAILDIR instead of $DEFAULT as a place for folders
++        // in procmailrc rules ($MAILDIR/folder, not $DEFAULT/folder)
++        // 'folders_in_maildir' => true,
+         // An array of variables to append to every generated script.
+         // Use if you need to set up specific environment variables.
+         'variables' => array(

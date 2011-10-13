@@ -4,15 +4,16 @@
 Summary:	Ingo - an email filter rules manager
 Summary(pl.UTF-8):	Ingo - zarządca reguł filtrowania poczty elektronicznej
 Name:		horde-%{hordeapp}
-Version:	1.2.5
+Version:	1.2.6
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/ingo/%{hordeapp}-h3-%{version}.tar.gz
-# Source0-md5:	a394a02f0a3e3cf4cc57fd6c19712f29
+# Source0-md5:	d8549db0b8ceeb08dd16e0f99a275e05
 Source1:	%{hordeapp}.conf
 Patch0:		%{hordeapp}-path.patch
 Patch1:		%{hordeapp}-maildir-prefix.patch
+Patch2:		%{hordeapp}-folders-in-maildir.patch
 URL:		http://www.horde.org/ingo/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -64,6 +65,7 @@ Licencji Publicznej GNU (General Public License). Więcej informacji
 %setup -q -n %{hordeapp}-h3-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 rm */.htaccess
 for i in config/*.dist; do
