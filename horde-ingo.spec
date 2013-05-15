@@ -5,12 +5,13 @@ Summary:	Ingo - an email filter rules manager
 Summary(pl.UTF-8):	Ingo - zarządca reguł filtrowania poczty elektronicznej
 Name:		horde-%{hordeapp}
 Version:	1.2.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	ftp://ftp.horde.org/pub/ingo/%{hordeapp}-h3-%{version}.tar.gz
 # Source0-md5:	d8549db0b8ceeb08dd16e0f99a275e05
-Source1:	%{hordeapp}.conf
+Source1:	%{hordeapp}-apache.conf
+Source2:	%{hordeapp}-httpd.conf
 Patch0:		%{hordeapp}-path.patch
 Patch1:		%{hordeapp}-maildir-prefix.patch
 Patch2:		%{hordeapp}-folders-in-maildir.patch
@@ -23,6 +24,7 @@ Requires:	webapps
 Suggests:	php-pear-Net_Sieve >= 1.0.1
 Suggests:	php-pear-Net_Socket
 Obsoletes:	ingo
+Conflicts:	apache-base < 2.4.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -87,7 +89,7 @@ cp -a docs/CREDITS $RPM_BUILD_ROOT%{_appdir}/docs
 
 ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,10 +105,10 @@ fi
 %triggerun -- apache1 < 1.3.37-3, apache1-base
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache < 2.2.0, apache-base
+%triggerin -- apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache < 2.2.0, apache-base
+%triggerun -- apache-base
 %webapp_unregister httpd %{_webapp}
 
 %files
